@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Missing_Person.Models.Entity.MissingPerson>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <link href="~/Content/customer.css" rel="stylesheet" />
+    <link href="~/Content/customer - Copy.css" rel="stylesheet" />
+    <meta charset="utf-8">
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    @Html.ActionLink("Add new Person", "Create", "MissingPersons", new { @class="btn btn-primary btn-lg btn-block" })
+
+    <div class="container">
+
+        <div class="row mt-5">
+            @foreach (var x in Model)
+            {
+                <div class="col-md-3 col-8 offset-3  offset-md-2 profile-box border pt-4 pb-2  text-center  ml-3 mt-2 border border-info rounded ">
+                    @{ 
+                        if(x.ImagePath == null)
+                        {
+                            x.ImagePath = "hell";
+                        }
+                    }
+                    <img src="@Url.Content(x.ImagePath)" class="rounded-circle" style="width:180px;">
+
+                    <h3 class="pt-4 "><strong>@x.Name @x.LastName</strong></h3>
+                    <p class="mb-2">Age: @x.Age</p>
+                    @Html.ActionLink("Edit", "Edit", "MissingPersons", new { id = x.personID }, new { @class = "btn btn-info btn-lg" })
+                    @Html.ActionLink("Delete", "Delete", "MissingPersons", new { id = x.personID }, new { @class = "btn btn-danger btn-lg" })
+                    @Html.ActionLink("Details", "Details", "MissingPersons", new { id = x.personID }, new { @class = "btn btn-primary btn-lg" })
+                    <p></p><p></p>
+                </div>
+            }
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<br /><br /><br /><br />
+

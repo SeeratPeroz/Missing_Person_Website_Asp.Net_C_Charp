@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Missing_Person.Models.Entity.MissingPerson>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <link href="~/Content/customer.css" rel="stylesheet" />
+    <link href="~/Content/customer - Copy.css" rel="stylesheet" />
+    <meta charset="utf-8">
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <div class="container">
+
+        <div class="row mt-5">
+            @foreach (var x in Model)
+            {
+                <div class="col-md-3 col-8 offset-3  offset-md-2 profile-box border pt-4 pb-2 rounded text-center  ml-3 mt-2 border border-info rounded ">
+                    @{
+                        if (x.ImagePath == null)
+                        {
+                            x.ImagePath = "hell";
+                        }
+                    }
+                    <img src="@Url.Content(x.ImagePath)" class="rounded-circle" style="width:200px;">
+
+                    <h3 class="pt-4 "><strong>@x.Name @x.LastName</strong></h3>
+                    <p class="mb-2">@x.Age</p>
+                    @Html.ActionLink("View", "ViewPerson", "MissingPersons", new { id = x.personID }, new { @class = "btn btn-outline-success btn-lg" })
+                    <p></p><p></p>
+                </div>
+            }
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<br /><br /><br /><br />
+

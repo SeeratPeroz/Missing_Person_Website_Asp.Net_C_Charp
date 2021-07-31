@@ -1,0 +1,72 @@
+﻿@model Missing_Person.Models.Entity.MissingPerson
+@{
+    ViewBag.Title = "ViewPerson";
+}
+
+
+
+<h2>Person Details</h2>
+
+    <br />
+    <div class="container">
+
+        <div class="row mt-5">
+
+                <div class="col-md-3 col-8 offset-2  offset-md-2 profile-box border pt-1 rounded text-center  ml-3 border border-info rounded ">
+                    @{ if (Model.ImagePath == null)
+                        {
+                            Model.ImagePath = "https://placeholder.com/";
+                        }
+                    }
+
+                    <img src="@Url.Content(Model.ImagePath)" class="rounded-circle" style="width:200px; padding-left:20px;" />
+
+
+                    <h3 class="pt-4 "><strong>@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.LastName)</strong></h3>
+                    <p>
+                        @Html.DisplayNameFor(model => model.FatherName): @Html.DisplayFor(model => model.FatherName)
+                    </p>
+                    <p>
+                        @Html.DisplayNameFor(model => model.Age): @Html.DisplayFor(model => model.Age)
+                    </p>
+
+
+
+                    <p>
+                        @Html.DisplayNameFor(model => model.Nation): @Html.DisplayFor(model => model.Nation)
+                    </p>
+
+                   
+                    <p>
+                        @Html.DisplayNameFor(model => model.Gender): @Html.DisplayFor(model => model.Gender)
+                    </p>
+
+                    <p>
+                        @Html.DisplayNameFor(model => model.DOB): @Html.DisplayFor(model => model.DOB)
+                    </p>
+
+                    <p>
+                        @Html.DisplayNameFor(model => model.DOB): @Html.DisplayFor(model => model.DOB)
+                    </p>
+
+                    <p>
+                        @Html.DisplayNameFor(model => model.MissingFrom): @Html.DisplayFor(model => model.MissingFrom)
+                    </p>
+
+                    <p>
+                        @Html.DisplayNameFor(model => model.MissingPlace): @Html.DisplayFor(model => model.MissingPlace)
+                    </p>
+                    <p>
+                        @Html.DisplayNameFor(model => model.Phone): @Html.DisplayFor(model => model.Phone)
+                    </p>
+
+                    <p>
+                        @Html.DisplayNameFor(model => model.Email): @Html.DisplayFor(model => model.Email)
+                    </p>
+                </div>
+
+        </div>
+      
+</div><p>
+    @Html.ActionLink("Back to list", "Index", "Home", "Home", new { @class = "btn btn-outline-success btn-lg" })
+</p>

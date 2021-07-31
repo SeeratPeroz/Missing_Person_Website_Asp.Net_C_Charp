@@ -1,0 +1,120 @@
+﻿@model Missing_Person.Models.Entity.MissingPerson
+
+@{
+    ViewBag.Title = "Edit Person";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<br /><br /><br />
+<h1>Edit Person</h1>
+<br /><br />
+
+<div id="result"></div>
+
+<script>
+    function sett() {
+        // Check browser support
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            alert(ImageFile.value);
+            //sessionStorage.setItem("imgPath", ImageFile.value);
+            if (ImageFile.value == "" || ImageFile.value == null) {
+                alert(document.getElementById("img").src);
+            }
+            alert(ImageFile.value);
+
+            
+        } else {
+            alert("Sorry, your browser does not support Web Storage...");
+
+    }
+}
+</script>
+
+@using (Html.BeginForm("Edit", "MissingPersons", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <table class="table table-striped">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.personID)
+        <tr>
+            <td> @Html.LabelFor(m => m.Name)</td>
+            <td>@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+          
+            <td> @Html.LabelFor(m => m.ImagePath)</td>
+            <td><input type="file" name="ImageFile" id="ImageFile" /></td>
+            <td>
+                <img id="img" src="@Url.Content(Model.ImagePath)" class="rounded-circle" style="width:80px; height:80px;" />
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.LastName)</td>
+            <td>@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.FatherName)</td>
+            <td>@Html.TextBoxFor(m => m.FatherName, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.FatherName, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.Age)</td>
+            <td>@Html.TextBoxFor(m => m.Age, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.Age, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.Gender)</td>
+            <td>@Html.TextBoxFor(m => m.Gender, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.Gender, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.Nation)</td>
+            <td>@Html.TextBoxFor(m => m.Nation, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.Nation, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.DOB)</td>
+            <td>@Html.TextBoxFor(m => m.DOB, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.DOB, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.MissingPlace)</td>
+            <td>@Html.TextBoxFor(m => m.MissingPlace, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.MissingPlace, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.MissingFrom)</td>
+            <td>@Html.TextBoxFor(m => m.MissingFrom, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.MissingFrom, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.Phone)</td>
+            <td>@Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.Phone, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.Email)</td>
+            <td>@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2"><input type="submit" value="Save" class="btn btn-primary pull-left" onclick="(sett());" /></td>
+        </tr>
+    </table>
+
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "", new {@class = "btn theme-btn btn-block pull-left"})
+</div>
+<br />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

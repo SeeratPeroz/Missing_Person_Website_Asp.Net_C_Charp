@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.prdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prdPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.prdName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prdPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.prdID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.prdID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.prdID })
+        </td>
+    </tr>
+}
+
+</table>
